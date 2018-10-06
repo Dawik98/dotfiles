@@ -41,6 +41,8 @@ modules-right = volume network battery date time
 modules-center = spotify
 modules-left = power rofi_window file-manager chrome
 
+enable-ipc = true
+
 ;------------------------------------------|
 
 [bar/workspaces_laptop_screen]
