@@ -1,0 +1,389 @@
+;------------------------------------------|
+;------- P O L Y B A R   C O N F I G ------| 
+;------------------------------------------|
+
+[colors]
+bg = #141e23
+fg = #95A5A6
+border = #242D36
+red = #E74C3C
+green = #2ECC71
+yellow = #F39C12
+blue = #6BB9F0
+magenta = #C8438C
+cyan = #07c5ac
+
+[vars]
+padding = 3
+
+;------------------------------------------|
+
+[bar/laptop_screen_bar]
+monitor = eDP-1
+
+bottom = true
+fixed-center = true
+
+height = 25
+
+background = ${colors.bg}
+foreground = ${colors.fg}
+
+border-top-size = 4
+border-top-color = ${colors.border}
+
+font-0 = "Noto:size=14;3"
+font-1 = "FontAwesome:size=14;3"
+
+wm-restack = i3
+
+modules-right = volume network battery date time
+modules-center = spotify
+modules-left = power rofi_window file-manager chrome
+
+;------------------------------------------|
+
+[bar/workspaces_laptop_screen]
+monitor = eDP-1 
+bottom = false
+
+background = ${colors.bg}
+foreground = ${colors.fg}
+
+border-bottom-size = 4
+border-bottom-color = ${colors.border}
+
+wm-restack = i3
+
+height = 25
+
+font-0 = "RobotoMono-Regular:size=14;3"
+
+modules-center = i3
+
+;------------------------------------------|
+
+[bar/extra_screen_bar]
+monitor = HDMI-1
+bottom = true
+
+background = ${colors.bg}
+foreground = ${colors.fg}
+
+border-top-size = 4
+border-top-color = ${colors.border}
+
+height = 20
+
+wm-restack = i3
+
+font-0 = "RobotoMono-Regular:size=11;3"
+font-1 = "FontAwesome:size=11;3"
+
+
+modules-left = power rofi_window file-manager chrome
+
+;------------------------------------------|
+
+[bar/workspaces_extra_screen]
+monitor = HDMI-1 
+bottom = false
+
+background = ${colors.bg}
+foreground = ${colors.fg}
+
+border-bottom-size = 4
+border-bottom-color = ${colors.border}
+
+wm-restack = i3
+
+height = 20
+
+font-0 = "RobotoMono-Regular:size=11;3"
+
+modules-center = i3
+
+;------------------------------------------|
+;-------------- M O D U L E S -------------| 
+;------------------------------------------|
+
+[module/cpu]
+
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.blue}
+label = cpu: %percentage%%
+
+;------------------------------------------|
+
+[module/battery]
+
+type = internal/battery
+poll-interval = 5
+
+format-charging = <animation-charging> <label-charging> 
+format-charging-padding = ${vars.padding}
+format-charging-background = ${colors.bg}
+label-charging = %percentage%%
+label-charging-foreground = ${colors.green}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-padding = ${vars.padding}
+format-discharging-background = ${colors.bg}
+label-discharging = %percentage%%
+label-discharging-foreground = ${colors.green}
+
+format-full = <ramp-capacity> <label-full>
+format-full-padding = ${vars.padding}
+format-full-background = ${colors.bg}
+label-full = %percentage%%
+label-full-foreground = ${colors.green}
+format-low-background = ${colors.red} ;<-- DONT KNOW IF IT WORKS
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+ramp-capacity-0-foreground = ${colors.green}
+ramp-capacity-1-foreground = ${colors.green}
+ramp-capacity-2-foreground = ${colors.green}
+ramp-capacity-3-foreground = ${colors.green}
+ramp-capacity-4-foreground = ${colors.green}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+
+animation-charging-0-foreground = ${colors.green}
+animation-charging-1-foreground = ${colors.green}
+animation-charging-2-foreground = ${colors.green}
+animation-charging-3-foreground = ${colors.green}
+animation-charging-4-foreground = ${colors.green}
+
+animation-charging-framerate = 300
+
+;------------------------------------------|
+
+[module/date]
+;TODO open calendar when clicking on
+
+type = internal/date
+interval = 5.0
+
+date = %d-%m-%Y
+time = %H:%M
+
+format = <label>
+format-background = ${colors.bg}
+format-foreground = ${colors.blue}
+format-padding = ${vars.padding}
+
+label =  %date%
+click-left = chromium https://calendar.google.com/calendar/r &
+
+;------------------------------------------|
+
+[module/time]
+
+type = internal/date
+interval = 5.0
+
+date = %d-%m-%Y
+time = %H:%M
+
+format = <label>
+format-background = ${colors.bg}
+format-foreground = ${colors.magenta}
+format-padding = ${vars.padding}
+
+label =  %time%
+
+;------------------------------------------|
+
+[module/network]
+; TODO show download speed when hovering over
+
+type = internal/network
+interface = wlo1
+interval = 3.0
+
+format-connected = <label-connected> 
+format-connected-background = ${colors.bg}
+format-connected-foreground = ${colors.yellow}
+format-connected-padding = ${vars.padding}
+label-connected =  %essid% 
+
+format-disconnected = <label-disconnected>
+format-disconnected-background = ${colors.bg}
+format-disconnected-foreground = ${colors.yellow}
+format-disconnected-padding = ${vars.padding}
+label-disconnected = not connected
+
+format-packetloss = <animation-packetloss> <label-packetloss> 
+format-packetloss-background = ${colors.bg}
+format-packetloss-foreground = ${colors.yellow}
+format-packetloss-padding = ${vars.padding} 
+label-packetloss = %essid%
+
+
+ramp-signal-0 = -
+ramp-signal-1 = !
+ramp-signal-2 = !!
+ramp-signal-3 = !!!
+ramp-signal-4 = !!!!
+ramp-signal-5 = !!!!!
+
+animation-packetloss-0 = 
+animation-packetloss-1 = !
+animation-packetloss-0-foreground = ${colors.yellow}
+animation-packetloss-1-foreground = ${colors.yellow}
+animation-packetloss-framerate = 500
+
+click-left = connman-gtk  ; <-- NOT WORKING
+
+
+;------------------------------------------|
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = true
+index-sort = true
+
+format = <label-state>
+
+label-focused = %name%
+label-focused-padding = ${vars.padding}
+label-focused-background = ${colors.red}
+label-focused-foreground = ${colors.bg}
+
+label-unfocused = %name%
+label-unfocused-padding = ${vars.padding}
+label-unfocused-background = ${colors.border}
+label-unfocused-foreground = ${colors.fg}
+
+label-visible = %name%
+label-visible-padding = ${vars.padding}
+label-visible-background = ${colors.border}
+label-visible-foreground = ${colors.fg}
+
+
+;------------------------------------------|
+
+[module/volume]
+
+type = internal/volume
+
+format-volume = <label-volume> <ramp-volume> <bar-volume> 
+format-volume-padding = ${vars.padding}
+label-volume = %percentage%%
+label-volume-foreground = ${colors.cyan}
+label-volume-background = ${colors.bg}
+
+format-muted = <label-muted>
+format-muted-padding = ${vars.padding}
+label-muted = M   
+label-muted-foreground = ${colors.fg}
+label-muted-background = ${colors.bg}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+
+ramp-volume-0-foreground = ${colors.cyan}
+ramp-volume-1-foreground = ${colors.cyan}
+
+bar-volume-width = 8
+bar-volume-indicator = 
+bar-volume-fill = 
+bar-volume-empty = 
+bar-volume-indicator-foreground = ${colors.cyan}
+bar-volume-fill-foreground = ${colors.cyan}
+bar-volume-empty-foreground = ${colors.fg}
+
+click-left = pavucontrol
+;------------------------------------------|
+
+[module/spotify]
+
+type = custom/script
+
+interval = 1
+
+format-prefix = "  "
+format-prefix-foreground = ${colors.green}
+
+format = <label>
+exec = python ~/.config/polybar/polybar-spotify.py -f '{artist} - {song}'
+
+click-left = i3-msg "[class=Spotify] focus"
+
+;------------------------------------------|
+
+[module/file-manager]
+
+type = custom/text
+
+content = " Thunar"
+content-padding = ${vars.padding}
+content-underline = ${colors.border}
+;click-left = termite --exec=ranger --name=ranger
+click-left = Thunar &
+
+;------------------------------------------|
+
+[module/chrome]
+
+type = custom/text
+
+content = " Chrome"
+content-padding = ${vars.padding}
+content-underline = ${colors.border}
+click-left = chromium &
+
+;------------------------------------------|
+
+[module/power]
+
+type = custom/text
+
+content = ""
+content-padding = ${vars.padding}
+content-underline = ${colors.border}
+content-foreground = ${colors.red}
+click-left = bash ~/.config/polybar/power.sh
+
+;------------------------------------------|
+
+[module/rofi_window]
+
+type = custom/text
+
+content = ""
+content-padding = ${vars.padding}
+content-underline = ${colors.border}
+content-foreground = ${colors.blue}
+click-left = rofi -show window
+
+
+; TODO:
+; * workspaces DONE-MAYBE
+; * volume DONE
+; * file browser DONE-ISH
+; * terminal calendar ?
+; * turn off ... buttons - DONE
+
+
+
+
+
+
+
+
+
+
+

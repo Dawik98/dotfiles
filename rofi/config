@@ -1,0 +1,8 @@
+rofi.font:              pango:noto 14
+rofi.bw:                4
+
+!                       bg       border   separator
+rofi.color-window:      #141E23, #F39C12, #95A5A6
+
+!                       bg       fg       bgalt    hlbg     hlfg
+rofi.color-normal:      #141E23, #95A5A6, #141E23, #95A5A6, #141E23
