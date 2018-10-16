@@ -1,0 +1,44 @@
+
+--- AUR helper ---
+app			 aurman
+search			-Ss
+install			-S
+update system		-Syu
+without questions	--noconfirm
+
+--- optirun ---
+optirun [options] application [application-parameters]
+manual			man optirun
+
+--- PLATFORMIO ---
+make new projesct	platformio init --board uno
+upload to board 	platformio run --target upload
+serial monitor		platformio device monitor
+
+--- EDIT GTK THEMES ---
+edit                    oomox-gui
+apply                   lxappearance
+
+home-directories        xdg-user-dirs
+
+--- OTHER STUFF ---
+multiscreen config      arandr
+wifi-setup              connman-gtk
+
+audio-setup:
+simple                  ncpamixer
+more stuff              pavucontrol
+
+find window props.      xprop
+find key names          xev
+check color             colorpicker
+
+activity-monitor        gotop
+startup time            systemd-analyze
+
+
+---
+change keyboard layout  loadkeys (no)
+create symlink          ln -s /path/to/file /path/to/symlink
+
+
