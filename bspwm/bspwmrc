@@ -1,0 +1,24 @@
+#! /bin/sh
+
+#Multimonitor setup
+bspc monitor eDP-1 -d I II III IV V
+bspc monitor HDMI-1 -d VI VII VIII IX X
+
+
+
+# keybind daemon
+pkill sxhkd
+sxhkd &
+
+# set the wallpaper
+feh --bg-scale ~/Pictures/Wallpapers/wallpaper.jpg
+
+# Start polybar
+$HOME/.config/polybar/launch.sh 
+
+# Turn off bell sound
+xset -b
+
+# setup monitor layout
+$HOME/.config/i3/screen_layout.sh 
+

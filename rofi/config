@@ -1,6 +1,9 @@
 rofi.font:              pango:noto 14
-rofi.bw:                4
+rofi.bw:                0
+rofi.width:             30
 
+rofi.location:		7
+rofi.yoffset:		-42
 !                       bg       border   separator
 rofi.color-window:      #141E23, #F39C12, #95A5A6
 

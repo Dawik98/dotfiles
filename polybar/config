@@ -12,9 +12,12 @@ yellow = #F39C12
 blue = #6BB9F0
 magenta = #C8438C
 cyan = #07c5ac
+transparent = #00000000
 
 [vars]
 padding = 3
+bar-height = 30
+border-size = 0
 
 ;------------------------------------------|
 
@@ -24,22 +27,25 @@ monitor = eDP-1
 bottom = true
 fixed-center = true
 
-height = 25
+height = ${vars.bar-height}
 
-background = ${colors.bg}
+background = ${colors.transparent}
 foreground = ${colors.fg}
 
-border-top-size = 4
+border-top-size = ${vars.border-size}
 border-top-color = ${colors.border}
+
+overline-size = 3
 
 font-0 = "Noto:size=14;3"
 font-1 = "FontAwesome:size=14;3"
+font-2 = "Font Awesome 5 Free:size=14;3"
 
 wm-restack = i3
 
 modules-right = volume network battery date time
 modules-center = spotify
-modules-left = power rofi_window file-manager chrome
+modules-left = power rofi_window file-manager browser
 
 enable-ipc = true
 
@@ -52,12 +58,12 @@ bottom = false
 background = ${colors.bg}
 foreground = ${colors.fg}
 
-border-bottom-size = 4
+border-bottom-size = ${vars.border-size}
 border-bottom-color = ${colors.border}
 
 wm-restack = i3
 
-height = 25
+height = ${vars.bar-height}
 
 font-0 = "RobotoMono-Regular:size=14;3"
 
@@ -69,13 +75,14 @@ modules-center = i3
 monitor = HDMI-1
 bottom = true
 
-background = ${colors.bg}
+background = ${colors.transparent}
 foreground = ${colors.fg}
 
-border-top-size = 4
+border-top-size = ${vars.border-size}
 border-top-color = ${colors.border}
 
-height = 20
+
+height = ${vars.bar-height}
 
 wm-restack = i3
 
@@ -94,12 +101,12 @@ bottom = false
 background = ${colors.bg}
 foreground = ${colors.fg}
 
-border-bottom-size = 4
+border-bottom-size = ${vars.border-size}
 border-bottom-color = ${colors.border}
 
 wm-restack = i3
 
-height = 20
+height = ${vars.bar-height}
 
 font-0 = "RobotoMono-Regular:size=11;3"
 
@@ -109,16 +116,6 @@ modules-center = i3
 ;-------------- M O D U L E S -------------| 
 ;------------------------------------------|
 
-[module/cpu]
-
-type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.blue}
-label = cpu: %percentage%%
-
-;------------------------------------------|
-
 [module/battery]
 
 type = internal/battery
@@ -126,19 +123,19 @@ poll-interval = 5
 
 format-charging = <animation-charging> <label-charging> 
 format-charging-padding = ${vars.padding}
-format-charging-background = ${colors.bg}
+format-charging-background = ${colors.transparent}
 label-charging = %percentage%%
 label-charging-foreground = ${colors.green}
 
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-padding = ${vars.padding}
-format-discharging-background = ${colors.bg}
+format-discharging-background = ${colors.transparent}
 label-discharging = %percentage%%
 label-discharging-foreground = ${colors.green}
 
 format-full = <ramp-capacity> <label-full>
 format-full-padding = ${vars.padding}
-format-full-background = ${colors.bg}
+format-full-background = ${colors.transparent}
 label-full = %percentage%%
 label-full-foreground = ${colors.green}
 format-low-background = ${colors.red} ;<-- DONT KNOW IF IT WORKS
@@ -172,21 +169,21 @@ animation-charging-framerate = 300
 ;------------------------------------------|
 
 [module/date]
-;TODO open calendar when clicking on
 
 type = internal/date
 interval = 5.0
 
-date = %d-%m-%Y
+date = %d %m %Y
 time = %H:%M
 
 format = <label>
-format-background = ${colors.bg}
+format-prefix = " "
+format-background = ${colors.transparent}
 format-foreground = ${colors.blue}
 format-padding = ${vars.padding}
 
 ;label =  %date%
-label = "%{A1:chromium https\://calendar.google.com/calendar/r &:}  %date%%{A}"
+label = "%{A1:firefox https\://calendar.google.com/calendar/r &:}%date%%{A}"
 click-left = chromium https://calendar.google.com/calendar/r &
 
 ;------------------------------------------|
@@ -200,7 +197,7 @@ date = %d-%m-%Y
 time = %H:%M
 
 format = <label>
-format-background = ${colors.bg}
+format-background = ${colors.transparent}
 format-foreground = ${colors.magenta}
 format-padding = ${vars.padding}
 
@@ -216,20 +213,20 @@ interface = wlo1
 interval = 3.0
 
 format-connected = <label-connected> 
-format-connected-background = ${colors.bg}
+format-connected-background = ${colors.transparent}
 format-connected-foreground = ${colors.yellow}
 format-connected-padding = ${vars.padding}
 ;label-connected =  %essid% 
 label-connected = "%{A1:connman-gtk:} %essid%%{A}"
 
 format-disconnected = <label-disconnected>
-format-disconnected-background = ${colors.bg}
+format-disconnected-background = ${colors.transparent}
 format-disconnected-foreground = ${colors.yellow}
 format-disconnected-padding = ${vars.padding}
 label-disconnected = not connected
 
 format-packetloss = <animation-packetloss> <label-packetloss> 
-format-packetloss-background = ${colors.bg}
+format-packetloss-background = ${colors.transparent}
 format-packetloss-foreground = ${colors.yellow}
 format-packetloss-padding = ${vars.padding} 
 label-packetloss = %essid%
@@ -247,8 +244,6 @@ animation-packetloss-1 = !
 animation-packetloss-0-foreground = ${colors.yellow}
 animation-packetloss-1-foreground = ${colors.yellow}
 animation-packetloss-framerate = 500
-
-click-left = connman-gtk  ; <-- NOT WORKING
 
 
 ;------------------------------------------|
@@ -283,24 +278,27 @@ label-visible-foreground = ${colors.fg}
 
 type = internal/volume
 
-format-volume = <label-volume> <ramp-volume> <bar-volume> 
+format-volume = <label-volume> <ramp-volume> 
 format-volume-padding = ${vars.padding}
 label-volume = %{A1:pavucontrol:} %percentage%%%{A}
 ;label-volume = %percentage%%
 label-volume-foreground = ${colors.cyan}
-label-volume-background = ${colors.bg}
+label-volume-background = ${colors.transparent}
 
 format-muted = <label-muted>
 format-muted-padding = ${vars.padding}
-label-muted = M   
+;label-muted = M   
+label-muted = MUTED
 label-muted-foreground = ${colors.fg}
-label-muted-background = ${colors.bg}
+label-muted-background = ${colors.transparent}
 
 ramp-volume-0 = 
-ramp-volume-1 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
 ramp-volume-0-foreground = ${colors.cyan}
 ramp-volume-1-foreground = ${colors.cyan}
+ramp-volume-2-foreground = ${colors.cyan}
 
 bar-volume-width = 8
 bar-volume-indicator = 
@@ -341,14 +339,14 @@ click-left = Thunar &
 
 ;------------------------------------------|
 
-[module/chrome]
+[module/browser]
 
 type = custom/text
 
-content = " Chrome"
+content = " Firefox"
 content-padding = ${vars.padding}
 content-underline = ${colors.border}
-click-left = chromium &
+click-left = firefox &
 
 ;------------------------------------------|
 
@@ -372,15 +370,13 @@ content = ""
 content-padding = ${vars.padding}
 content-underline = ${colors.border}
 content-foreground = ${colors.blue}
-click-left = rofi -show window
+click-left = rofi -show window 
 
 
 ; TODO:
 ; * workspaces DONE-MAYBE
 ; * volume DONE
 ; * file browser DONE-ISH
-; * terminal calendar ?
-; * turn off ... buttons - DONE
 
 
 
