@@ -1,7 +1,7 @@
 #!/bin/sh
 
 POWER="\tLog Out\n\tPower Off\n\tReboot\n\tSleep"
-ROFI=`echo -e $POWER | rofi -dmenu -lines 5 -columns 1 -p Power -width 25 -hide-scrollbar | awk '{print $1}'`
+ROFI=`echo -e $POWER | rofi -dmenu -lines 5 -columns 1 -location 7 -yoffset -45 -p "Power" -width 25 -hide-scrollbar | awk '{print $1}'`
 
 if [ ${#ROFI} -gt 0 ]
 then

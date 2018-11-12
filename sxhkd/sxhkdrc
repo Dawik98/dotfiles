@@ -23,7 +23,7 @@ super + space
 
 # Show d-menu
 super + d
-    rofi -show drun -show-icons -lines 7
+    rofi -show drun -show-icons 
 
 #show power menu
 super + shift + e
