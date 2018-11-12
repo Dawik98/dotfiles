@@ -41,7 +41,7 @@ font-0 = "Noto:size=14;3"
 font-1 = "FontAwesome:size=14;3"
 font-2 = "Font Awesome 5 Free:size=14;3"
 
-wm-restack = i3
+wm-restack = bspwm
 
 modules-right = volume network battery date time
 modules-center = spotify
@@ -61,13 +61,13 @@ foreground = ${colors.fg}
 border-bottom-size = ${vars.border-size}
 border-bottom-color = ${colors.border}
 
-wm-restack = i3
+wm-restack = bspwm
 
 height = ${vars.bar-height}
 
 font-0 = "RobotoMono-Regular:size=14;3"
 
-modules-center = i3
+modules-center = i3 bspwm
 
 ;------------------------------------------|
 
@@ -84,13 +84,13 @@ border-top-color = ${colors.border}
 
 height = ${vars.bar-height}
 
-wm-restack = i3
+wm-restack = bspwm
 
 font-0 = "RobotoMono-Regular:size=11;3"
 font-1 = "FontAwesome:size=11;3"
 
 
-modules-left = power rofi_window file-manager chrome
+modules-left = power rofi_window file-manager browser
 
 ;------------------------------------------|
 
@@ -104,13 +104,13 @@ foreground = ${colors.fg}
 border-bottom-size = ${vars.border-size}
 border-bottom-color = ${colors.border}
 
-wm-restack = i3
+wm-restack = bspwm
 
 height = ${vars.bar-height}
 
 font-0 = "RobotoMono-Regular:size=11;3"
 
-modules-center = i3
+modules-center = i3 bspwm
 
 ;------------------------------------------|
 ;-------------- M O D U L E S -------------| 
@@ -223,7 +223,7 @@ format-disconnected = <label-disconnected>
 format-disconnected-background = ${colors.transparent}
 format-disconnected-foreground = ${colors.yellow}
 format-disconnected-padding = ${vars.padding}
-label-disconnected = not connected
+label-disconnected = "%{A1:connman-gtk:}not connected{A}"
 
 format-packetloss = <animation-packetloss> <label-packetloss> 
 format-packetloss-background = ${colors.transparent}
@@ -253,6 +253,28 @@ type = internal/i3
 
 pin-workspaces = true
 index-sort = true
+
+format = <label-state>
+
+label-focused = %name%
+label-focused-padding = ${vars.padding}
+label-focused-background = ${colors.red}
+label-focused-foreground = ${colors.bg}
+
+label-unfocused = %name%
+label-unfocused-padding = ${vars.padding}
+label-unfocused-background = ${colors.border}
+label-unfocused-foreground = ${colors.fg}
+
+label-visible = %name%
+label-visible-padding = ${vars.padding}
+label-visible-background = ${colors.border}
+label-visible-foreground = ${colors.fg}
+
+;------------------------------------------|
+
+[module/bspwm]
+type = internal/bspwm
 
 format = <label-state>
 

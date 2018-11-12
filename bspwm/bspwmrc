@@ -1,24 +1,59 @@
 #! /bin/sh
 
-#Multimonitor setup
-bspc monitor eDP-1 -d I II III IV V
+## Coloring
+getcolors () {
+	FOREGROUND=$(xrdb -query | grep 'foreground:'| awk '{print $NF}')
+	BACKGROUND=$(xrdb -query | grep 'background:'| awk '{print $NF}')
+	BLACK=$(xrdb -query | grep 'color0:'| awk '{print $NF}')
+	RED=$(xrdb -query | grep 'color1:'| awk '{print $NF}')
+	GREEN=$(xrdb -query | grep 'color2:'| awk '{print $NF}')
+	YELLOW=$(xrdb -query | grep 'color3:'| awk '{print $NF}')
+	BLUE=$(xrdb -query | grep 'color4:'| awk '{print $NF}')
+	MAGENTA=$(xrdb -query | grep 'color5:'| awk '{print $NF}')
+	CYAN=$(xrdb -query | grep 'color6:'| awk '{print $NF}')
+	WHITE=$(xrdb -query | grep 'color7:'| awk '{print $NF}')
+}
+#xrdb ~/.Xresources
+COLOR=$(~/.colors/rakr)
+#SHORTCOLOR=$(echo $COLOR | sed "s@.*/@@")
+#xrdb -merge $COLOR
+
+getcolors
+
+# Multimonitor setup
+~/.config/bspwm/set_primary_monitor.sh eDP-1 '^1' &
+
 bspc monitor HDMI-1 -d VI VII VIII IX X
+bspc monitor eDP-1 -d I II III IV V
 
 
+# Bspwm configuration
+bspc config focus_follows_pointer true
+bspc config border_width 0
+bspc config window_gap 15
+bspc config focused_border_color "$GREEN" 
+bspc config normal_border_color "$BACKGROUND"
+bspc config active_border_color "$BACKGROUND"
 
 # keybind daemon
 pkill sxhkd
 sxhkd &
 
-# set the wallpaper
-feh --bg-scale ~/Pictures/Wallpapers/wallpaper.jpg
+# set keyboard layout
+setxkbmap -layout no
+
+#start compton
+compton -b
+
+# setup monitor layout
+$HOME/.config/i3/screen_layout.sh 
 
 # Start polybar
 $HOME/.config/polybar/launch.sh 
 
+# set the wallpaper
+feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
+
 # Turn off bell sound
 xset -b
-
-# setup monitor layout
-$HOME/.config/i3/screen_layout.sh 
 

@@ -1,3 +1,64 @@
-# Reload functions
-super + Escape
-	"$XDG_CONFIG_HOME"/sxhkd/functions
+# start terminal
+super + Return
+    termite
+
+## Close app
+super + shift + q
+    bspc node -c
+
+# Kill app :O
+alt + F4
+    bspc node -k
+
+## Fullscreen
+super + f
+    bspc desktop -l next
+
+super + shift + f
+    bspc node -t {fullscreen, tiled}
+
+# Toggle beetwen floating & tiled
+super + space
+    bspc node -t "~"{floating,tiled}
+
+# Show d-menu
+super + d
+    rofi -show drun -show-icons -lines 7
+
+#show power menu
+super + shift + e
+    bash ~/.config/polybar/power.sh
+
+# Reload config files
+super + shift + s
+    pkill -USR1 -x sxhkd
+
+## Reload bspwm config
+super + shift + BackSpace
+    bash ~/.config/bspwm/bspwmrc
+
+# Send the window to another edge of the screen
+super + shift + {Left,Down,Up,Right}
+    bash ~/.config/sxhkd/move_node.sh {west, south, north, east}
+
+# Move window to another workspace
+super + shift + {1-9}
+#    id=$(bspc query -N -n); bspc node -d ^{1-9}; bspc node -f ${id}
+    bspc node -d ^{1-9}
+
+## Focus window
+super + {Left,Down,Up,Right}
+ bspc node -f {west,south,north,east}
+
+# Go to another workspace
+super + {1-9}
+    bspc desktop -f ^{1-9}
+
+# Expanding windows
+super + control + {Left,Right,Up,Down}
+    bspc node -z {left -20 0,right 20 0,top 0 -20,bottom 0 20}
+	
+# Shrinking windows
+super + alt + {Left,Right,Up,Down}
+    bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
+
