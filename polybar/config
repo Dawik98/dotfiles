@@ -223,7 +223,7 @@ format-disconnected = <label-disconnected>
 format-disconnected-background = ${colors.transparent}
 format-disconnected-foreground = ${colors.yellow}
 format-disconnected-padding = ${vars.padding}
-label-disconnected = "%{A1:connman-gtk:}not connected{A}"
+label-disconnected = "%{A1:connman-gtk:}not connected%{A}"
 
 format-packetloss = <animation-packetloss> <label-packetloss> 
 format-packetloss-background = ${colors.transparent}

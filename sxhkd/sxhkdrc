@@ -62,3 +62,43 @@ super + control + {Left,Right,Up,Down}
 super + alt + {Left,Right,Up,Down}
     bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
 
+# Media keys:
+# Audio
+XF86AudioRaiseVolume
+    pactl set-sink-volume 0 +5%
+
+XF86AudioLowerVolume
+    pactl set-sink-volume 0 -5%
+
+XF86AudioMute
+    pactl set-sink-mute 0 toggle
+
+# Brightness
+XF86MonBrightnessUp
+    light -A 5
+
+XF86MonBrightnessDown
+    light -U 5
+
+# Volume:
+XF86AudioPlay
+    playerctl play-pause
+
+XF86AudioNext
+    playerctl next
+
+XF86AudioPrev
+    playerctl previous
+
+# Screenshot
+Print
+    deepin-screenshot
+
+
+
+
+
+
+
+
+
