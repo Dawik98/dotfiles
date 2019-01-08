@@ -1,13 +1,13 @@
 rofi.font:              pango:noto 16
 rofi.bw:                0
 rofi.width:             30
-rofi.lines:             35
+rofi.lines:             33
 rofi.padding:           8
 
-rofi.location:		8
-!rofi.yoffset:		-42
+rofi.location:		7
+rofi.yoffset:		-45
 !                       bg       border   separator
-rofi.color-window:      #141E23, #F39C12, #95A5A6
+rofi.color-window:      #242D36, #F39C12, #95A5A6
 
 !                       bg       fg       bgalt    hlbg     hlfg
-rofi.color-normal:      #141E23, #95A5A6, #141E23, #F39C12, #141E23
+rofi.color-normal:      #242D36, #95A5A6, #242D36, #F39C12, #242D36

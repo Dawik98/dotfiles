@@ -45,7 +45,7 @@ wm-restack = bspwm
 
 modules-right = volume network battery date time
 modules-center = spotify
-modules-left = power rofi_window file-manager browser
+modules-left = power rofi_window settings file-manager browser
 
 enable-ipc = true
 
@@ -55,7 +55,7 @@ enable-ipc = true
 monitor = eDP-1 
 bottom = false
 
-background = ${colors.bg}
+background = ${colors.transparent}
 foreground = ${colors.fg}
 
 border-bottom-size = ${vars.border-size}
@@ -384,6 +384,17 @@ click-left = bash ~/.config/polybar/power.sh
 
 ;------------------------------------------|
 
+[module/settings]
+
+type = custom/text
+
+content = ""
+content-padding = ${vars.padding}
+content-underline = ${colors.border}
+content-foreground = ${colors.yellow}
+click-left = bash ~/.config/polybar/settings.sh
+
+;------------------------------------------|
 [module/rofi_window]
 
 type = custom/text
