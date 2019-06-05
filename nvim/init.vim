@@ -39,6 +39,10 @@ call plug#end()
 "start NERDTree
 "autocmd vimenter * NERDTree
 
+"insert new line with enter
+nmap <S-Enter> O<Esc>
+nmap <Enter> o<Esc>
+
 "use line number
 :set number relativenumber
 

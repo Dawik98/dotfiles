@@ -98,7 +98,7 @@ modules-left = power rofi_window file-manager browser
 monitor = HDMI-1 
 bottom = false
 
-background = ${colors.bg}
+background = ${colors.transparent}
 foreground = ${colors.fg}
 
 border-bottom-size = ${vars.border-size}
@@ -345,7 +345,7 @@ format-prefix-foreground = ${colors.green}
 format = <label>
 exec = python ~/.config/polybar/polybar-spotify.py -f '{artist} - {song}'
 
-click-left = i3-msg "[class=Spotify] focus"
+click-left = bspc node -f 0x02200001
 
 ;------------------------------------------|
 
