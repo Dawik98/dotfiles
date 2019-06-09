@@ -15,6 +15,8 @@ modkey = "Mod4"
 -- {{{ Mouse bindings
 
 keys.desktopbuttons = gears.table.join(
+    awful.button({ }, 1, function ()
+        sidebar.visible = false end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 )
