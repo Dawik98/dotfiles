@@ -44,11 +44,16 @@ myawesomemenu = awful.menu{items={
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu=myawesomemenu})
 
 -- Create Start Menu
+
+
 start_menu_widget = wibox.widget.imagebox(beautiful.arch_icon)
+
 start_menu_widget:buttons(gears.table.join(
             -- Left click
             awful.button({ }, 1, function()
                 sidebar.screen = awful.screen.focused(mouse)
+                sidebar.y = sidebar.screen.geometry.y + beautiful.sidebar_y
+
                 sidebar.visible = not sidebar.visible 
             end)
 ))

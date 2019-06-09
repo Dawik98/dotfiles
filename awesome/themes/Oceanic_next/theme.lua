@@ -101,11 +101,11 @@ theme.wibar_border_radius = theme.border_radius
 
 theme.sidebar_bg = theme.xbg
 theme.sidebar_fg = theme.xfg
-theme.sidebar_y = -20
+theme.sidebar_y = 0--theme.wibar_height
 theme.sidebar_x = 0
 theme.sidebar_opacity = 1
-theme.sidebar_width = 400
-theme.sidebar_height = screen_height - theme.wibar_height
+theme.sidebar_width = 500
+theme.sidebar_height = screen_height --- theme.wibar_height
 theme.sidebar_border_radius = dpi(0)
 theme.sidebar_hide_on_mouse_leave = true
 
@@ -119,8 +119,13 @@ theme.sidebar_hide_on_mouse_leave = true
 -- Icons - wibar
 theme.awesome_icon = icon_path .. "apps.png"
 theme.arch_icon = icon_path .. "arch.png"
+theme.arch_active_icon = icon_path .. "arch_active.png"
 theme.search_icon = icon_path .. "search.png"
 
+theme.play_icon = icon_path .. "play.png"
+theme.pause_icon = icon_path .. "pause.png"
+theme.next_icon = icon_path .. "next.png"
+theme.previous_icon = icon_path .. "previous.png"
 
 
 
