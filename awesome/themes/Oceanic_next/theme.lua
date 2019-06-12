@@ -43,10 +43,12 @@ theme.xcolor13 = xrdb.color13
 theme.xcolor14 = xrdb.color14 
 theme.xwhite_light = xrdb.color15 
 
--------------------------------------------------------------------
--- Gaps
-theme.useless_gap   = dpi(5)
-theme.screen_margin = dpi(3)
+theme.dark_red = "#4d1f21"
+theme.dark_rgreen = "#3b4d39"
+theme.dark_yellow = "#4d3d1e"
+theme.dark_blue = "#26394d"
+theme.dark_magenta = "#26394d"
+theme.dark_cyan = "#294d4d"
 
 -------------------------------------------------------------------
 -- Borders
@@ -98,7 +100,6 @@ theme.wibar_border_radius = theme.border_radius
 -------------------------------------------------------------------
 -- Sidebar
 
-
 theme.sidebar_bg = theme.xbg
 theme.sidebar_fg = theme.xfg
 theme.sidebar_y = 0--theme.wibar_height
@@ -109,7 +110,8 @@ theme.sidebar_height = screen_height --- theme.wibar_height
 theme.sidebar_border_radius = dpi(0)
 theme.sidebar_hide_on_mouse_leave = true
 
-
+theme.volume_bar_bg_color = theme.dark_magenta
+theme.volume_bar_fg_color = theme.xmagenta
 
 
 
@@ -122,11 +124,17 @@ theme.arch_icon = icon_path .. "arch.png"
 theme.arch_active_icon = icon_path .. "arch_active.png"
 theme.search_icon = icon_path .. "search.png"
 
+
+-- Icons - sidebar
 theme.play_icon = icon_path .. "play.png"
 theme.pause_icon = icon_path .. "pause.png"
 theme.next_icon = icon_path .. "next.png"
 theme.previous_icon = icon_path .. "previous.png"
 
+theme.play_icon_size = 45
+theme.pause_icon_size = 45
+theme.next_icon_size = 45
+theme.previous_icon_size = 45
 
 
 
