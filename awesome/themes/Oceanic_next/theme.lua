@@ -45,9 +45,9 @@ theme.xwhite_light = xrdb.color15
 
 theme.dark_red = "#4d1f21"
 theme.dark_rgreen = "#3b4d39"
-theme.dark_yellow = "#4d3d1e"
+theme.dark_yellow = "#615640"
 theme.dark_blue = "#26394d"
-theme.dark_magenta = "#26394d"
+theme.dark_magenta = "#4d394d"
 theme.dark_cyan = "#294d4d"
 
 -------------------------------------------------------------------
@@ -59,6 +59,12 @@ theme.border_focus  = theme.xgreen
 
 -- Rounded corners
 theme.border_radius = dpi(5)
+
+-- Gaps
+theme.useless_gap   = 5
+-- This could be used to manually determine how far away from the
+-- screen edge the bars / notifications should be.
+theme.screen_margin = 5
 
 -------------------------------------------------------------------
 -- Titlebars
@@ -110,10 +116,17 @@ theme.sidebar_height = screen_height --- theme.wibar_height
 theme.sidebar_border_radius = dpi(0)
 theme.sidebar_hide_on_mouse_leave = true
 
+theme.progressbar_width = 200
+theme.progressbar_height = 20
+
+
 theme.volume_bar_bg_color = theme.dark_magenta
 theme.volume_bar_fg_color = theme.xmagenta
+theme.volume_bar_muted_color = theme.dark_magenta
 
 
+theme.brightness_bar_bg_color = theme.dark_yellow
+theme.brightness_bar_fg_color = theme.xyellow
 
 
 
@@ -136,10 +149,11 @@ theme.pause_icon_size = 45
 theme.next_icon_size = 45
 theme.previous_icon_size = 45
 
+theme.volume_icon = icon_path .. "volume.png"
+theme.volume_icon_size = 40
 
-
-
-
+theme.brightness_icon = icon_path .. "brightness.png"
+theme.brightness_icon_size = 40
 
 
 

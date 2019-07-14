@@ -99,7 +99,62 @@ keys.globalkeys = gears.table.join(
       {description = "rofi launcher", group = "launcher"}),
 
     awful.key({ modkey, "Shift" }, "r", awesome.restart,
-              {description = "reload awesome", group = "awesome"})
+              {description = "reload awesome", group = "awesome"}),
+
+    -- Media buttons
+    -- Volume:
+    awful.key( { }, "XF86AudioMute", function()
+        awful.util.spawn("pactl set-sink-mute 0 toggle",false)
+    end,
+    {description = "(un)mute volume", group = "volume"}),
+
+    awful.key( { }, "XF86AudioRaiseVolume", function()
+        awful.util.spawn("pactl set-sink-volume 0 +5%",false)
+    end,
+    {description = "Volume up", group = "volume"}),
+
+    awful.key( { }, "XF86AudioLowerVolume", function()
+        awful.util.spawn("pactl set-sink-volume 0 -5%",false)
+    end,
+    {description = "Volume down", group = "volume"}),
+
+    -- Audio player
+    awful.key( { }, "XF86AudioPlay", function()
+        awful.util.spawn("playerctl play-pause",false)
+    end,
+    {description = "Play audio", group = "volume"}),
+
+    awful.key( { }, "XF86AudioNext", function()
+        awful.util.spawn("playerctl next",false)
+    end,
+    {description = "Next song", group = "volume"}),
+
+    awful.key( { }, "XF86AudioPrev", function()
+        awful.util.spawn("playerctl previous",false)
+    end,
+    {description = "Previous song", group = "volume"}),
+
+    -- Brightness:
+    awful.key( { }, "XF86MonBrightnessUp", function()
+        awful.spawn.easy_async_with_shell("light -A 5", function()
+            awesome.emit_signal("brightness_changed")
+        end)
+    end,
+    {description = "Brightness up", group = "Other"}),
+
+    awful.key( { }, "XF86MonBrightnessDown", function()
+        awful.spawn.easy_async_with_shell("light -U 5", function()
+            awesome.emit_signal("brightness_changed")
+        end)
+    end,
+    {description = "Brightness Down", group = "Other"}),
+
+
+    -- Screenshot
+    awful.key( { }, "Print", function()
+        awful.util.spawn("deepin-screenshot",false)
+    end,
+    {description = "Screenshot", group = "Other"})
 )
 
 -- Bind all key numbers to tags.
